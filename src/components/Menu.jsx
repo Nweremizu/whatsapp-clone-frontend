@@ -206,10 +206,7 @@ function ProfileModal({ onClose }) {
         }
         className="self-start mb-2"
       >
-        <Avatar
-          sx={{ width: 60, height: 60 }}
-          src={user?.avatar || "https://randomuser.me/api/portraits/men/76.jpg"}
-        />
+        <Avatar sx={{ width: 60, height: 60 }} src={user?.avatar} />
       </Badge>
       <form className="flex flex-col gap-3">
         <label className="input input-sm input-bordered flex items-center gap-2">
