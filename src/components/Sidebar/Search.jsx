@@ -6,6 +6,7 @@ import { openSearch, setSearchInput } from "../../redux/slices/app";
 
 function Search({ setSearchResults }) {
   const { searchInput } = useSelector((state) => state.app);
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -14,6 +15,7 @@ function Search({ setSearchResults }) {
     async function searchUser() {
       const res = await axios.get(`/users?query=${searchInput}`, { signal });
       dispatch(openSearch(true));
+      res.data.users = res.data.users.filter((u) => u._id !== user._id);
       setSearchResults(res.data.users);
     }
 
