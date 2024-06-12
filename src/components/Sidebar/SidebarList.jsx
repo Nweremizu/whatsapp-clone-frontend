@@ -2,10 +2,11 @@ import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
 import { useSelector } from "react-redux";
 import SidebarChat from "./SidebarChat";
+import useResponsive from "../../hooks/useResponsive";
 
 function SidebarList() {
   const { chats } = useSelector((state) => state.chat);
-
+  const isMobile = useResponsive();
   return (
     <div>
       {chats.length === 0 ? (
@@ -15,7 +16,7 @@ function SidebarList() {
       ) : (
         <SimpleBar
           style={{
-            maxHeight: "calc(100vh - 9.1rem)",
+            maxHeight: `calc(100vh -${isMobile ? "10rem" : "9.1rem"})`,
             scrollbarWidth: "thin",
             paddingRight: "8px",
           }}
